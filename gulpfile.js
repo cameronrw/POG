@@ -1,5 +1,5 @@
 //initialize variables
-var gulp, sass, concat, uglify, rename;
+var gulp, sass, concat, uglify, rename, imagemin, cache;
 
 //load dependencies
 gulp = require('gulp');
@@ -7,6 +7,8 @@ sass = require('gulp-ruby-sass');
 concat = require('gulp-concat');
 uglify = require('gulp-uglify');
 rename = require('gulp-rename');
+imagemin = require('gulp-imagemin');
+cache = require('gulp-cache');
 
 //Sass
 gulp.task('sass', function () {
@@ -25,5 +27,20 @@ gulp.task('scripts', function() {
 	.pipe(uglify())
 	.pipe(gulp.dest('dist/js'));
 });
+//Images
+gulp.task('images', function() {
+	return gulp.src('src/images/**/*')
+	.pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+	.pipe(gulp.dest('build/img'));
+});
+//Watch
+gulp.task('watch', function() {
+   // Watch .js files
+   gulp.watch('src/js/*.js', ['scripts']);
+   // Watch .scss files
+   gulp.watch('src/scss/*.scss', ['sass']);
+   // Watch image files
+   gulp.watch('src/images/**/*', ['images']);
+});
 // Default task
-gulp.task('default', ['sass','scripts']);
+gulp.task('default', ['sass','scripts','images','watch']);

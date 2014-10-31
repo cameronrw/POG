@@ -1,0 +1,10 @@
+{
+  "name": "YourProject",
+  "version": "0.0.1",
+  "description": "Description of your project",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.9",
+    "gulp-ruby-sass": "^0.7.1"
+  }
+}

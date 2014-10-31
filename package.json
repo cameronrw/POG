@@ -1,13 +1,15 @@
 {
-  "name": "YourProject",
+  "name": "pog",
   "version": "0.0.1",
-  "description": "Description of your project",
+  "description": "pog",
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.9",
+    "gulp-autoprefixer": "^1.0.1",
     "gulp-cache": "^0.2.4",
     "gulp-concat": "^2.4.1",
     "gulp-imagemin": "^1.2.1",
+    "gulp-markdown": "^1.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-ruby-sass": "^0.7.1",
     "gulp-uglify": "^1.0.1"

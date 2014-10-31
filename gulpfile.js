@@ -1,5 +1,5 @@
 //initialize variables
-var gulp, sass, concat, uglify, rename, imagemin, cache;
+var gulp, sass, concat, uglify, rename, imagemin, cache, autoprefixer, markdown;
 
 //load dependencies
 gulp = require('gulp');
@@ -9,20 +9,32 @@ uglify = require('gulp-uglify');
 rename = require('gulp-rename');
 imagemin = require('gulp-imagemin');
 cache = require('gulp-cache');
+autoprefixer = require('gulp-autoprefixer');
+markdown = require('gulp-markdown');
+
+//HTML
+gulp.task('html', function () {
+	return gulp.src('src/*.md')
+	.pipe(markdown())
+	.pipe(gulp.dest('dist'));
+});
 
 //Sass
 gulp.task('sass', function () {
 	return gulp.src('src/scss/*.scss')
 	.pipe(rename({suffix: '.min'}))
-	.pipe(sass({style: 'compressed'}))
-	// .pipe(sass({sourcemap: true, sourcemapPath: '../scss'}))
+	.pipe(sass({sourcemap: true, style: 'compressed'}))
+	.pipe(autoprefixer({
+		browsers: ['last 2 version', "> 1%", 'ie 8', 'ie 9'],
+		cascade: false
+	}))
 	.on('error', function (err) { console.log(err.message); })
 	.pipe(gulp.dest('dist/css'));
 });
 
 //Scripts
 gulp.task('scripts', function() {
-	return gulp.src('src/js/*.js')
+	return gulp.src('src/js/**/*.js')
 	.pipe(concat('main.js'))
 	.pipe(rename({suffix: '.min'}))
 	.pipe(uglify())
@@ -47,4 +59,4 @@ gulp.task('watch', function() {
 });
 
 // Default task
-gulp.task('default', ['sass','scripts','images','watch']);
+gulp.task('default', ['html','sass','scripts','images','watch']);

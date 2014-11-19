@@ -1,1 +1,1 @@
-console.log('Herp Derp');
+// Custom site scripts

@@ -1,0 +1,14 @@
+[
+    {
+        "url": "/",
+        "name": "Home"
+    },
+    {
+        "url": "/about-us",
+        "name": "About us"
+    },
+    {
+        "url": "/contact-us",
+        "name": "Contact us"
+    }
+]

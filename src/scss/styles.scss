@@ -8,6 +8,7 @@
 @import "partials/_layout.scss";
 @import "partials/_components.scss";
 
+// Import vendor
 // Configure _mq
 
 $mq-responsive: true;
@@ -16,11 +17,11 @@ $mq-breakpoints: (
     tablet:  740px,
     desktop: 980px,
     wide:    1300px,
-
     desktopAd: 810px,
     mobileLandscape: 480px
 );
 $mq-static-breakpoint: desktop;
-$mq-show-breakpoints: (mobile, mobileLandscape, tablet, desktop, wide);
+$mq-show-breakpoints: (/*mobile, mobileLandscape, tablet, desktop, wide*/);
 
-@import "partials/_mq.scss";
+@import "vendor/mq/_mq.scss";
+@import "vendor/jeet/index.scss";
